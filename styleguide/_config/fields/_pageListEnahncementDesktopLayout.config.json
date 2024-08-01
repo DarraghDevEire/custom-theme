@@ -1,0 +1,17 @@
+{
+  "fields": {
+    "pageListEnahncementDesktopLayout": {
+      "displayName": "Desktop Layout",
+      "type": "text",
+      "cms.ui.dropDown": true,
+      "cms.ui.note": "Choose an alternate desktop layout for this module",
+      "cms.ui.placeholder": "Default",
+      "values": [
+        {
+          "label": "Grid",
+          "value": "grid"
+        }
+      ]
+    }
+  }
+}

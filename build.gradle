@@ -1,0 +1,75 @@
+plugins {
+    id 'distribution'
+    id 'com.brightspot.artifactory-publish'
+    id 'com.brightspot.git-hash-version'
+    id 'com.brightspot.bundle'
+}
+
+description = 'brightspot-theme-core'
+
+bundle {
+    yarnBuildCommand = 'build'
+    styleguideOutputDir = 'styleguide'
+    zipOutputPath = 'theme.zip'
+
+    // for CdnCssTest
+    cdnCssFiles = [
+        'styles/default/All.min.css'
+    ]
+}
+
+node {
+    version = '18.17.1'
+    yarnVersion = '1.22.19'
+    download = true
+}
+
+dependencies {
+    sharedTest 'com.brightspot.shared-tests:pack-standard-frontend-unit-tests'
+}
+
+// tar/zip files containing the theme files, for materialization into projects
+// (this is NOT the built theme for deploying to environments)
+distributions {
+    bundle {
+        contents {
+            into("styleguide") {
+                from "styleguide" into "styleguide"
+            }
+            from ".browserslistrc"
+            from ".editorconfig"
+            from ".eslintrc"
+            from ".npmrc"
+            from ".nvmrc"
+            from ".prettierrc"
+            from "babel.config.js"
+            from "package.json"
+            from "postcss.config.js"
+            from "tsconfig.json"
+            from "webpack.common.js"
+            from "webpack.dev.js"
+            from "webpack.prod.js"
+            from "webpack.prod-no-code-splitting.js"
+            from "webpack.profile.js"
+            from "yarn.lock"
+        }
+    }
+}
+
+// distributions include yarn.lock which is an output of the yarn task
+// so they need that task specified as an input
+tasks.named('bundleDistTar').configure(t -> {
+    t.inputs.files tasks.named('yarn')
+})
+tasks.named('bundleDistZip').configure(t -> {
+    t.inputs.files tasks.named('yarn')
+})
+
+publishing {
+    publications {
+        bundleDistribution(MavenPublication) {
+            artifact bundleDistTar
+            artifact bundleDistZip
+        }
+    }
+}

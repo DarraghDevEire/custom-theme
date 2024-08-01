@@ -1,0 +1,92 @@
+.GallerySlide {
+  display: block;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+
+  &-title {
+    &:extend(.headline-6 all);
+
+    bsp-gallery-page .Page-main &,
+    .Enhancement & {
+      &:extend(.headline-8 all);
+    }
+  }
+
+  &-caption {
+    &:extend(.subhead-3 all);
+
+    bsp-gallery-page .Page-main &,
+    .Enhancement & {
+      &:extend(.subhead-4 all);
+    }
+  }
+
+  &-credit {
+    &:extend(.byline-1 all);
+
+    bsp-gallery-page .Page-main &,
+    .Enhancement & {
+      &:extend(.subhead-4 all);
+    }
+  }
+
+  &-info {
+    margin-top: var(--vertical-spacing-md);
+
+    bsp-gallery-page .Page-main &,
+    .Enhancement & {
+      margin-top: var(--vertical-spacing-sm);
+    }
+  }
+
+  &-title,
+  &-caption,
+  &-credit {
+    .verticalSpacing(var(--vertical-spacing-md));
+
+    bsp-gallery-page .Page-main &,
+    .Enhancement & {
+      .verticalSpacing(var(--vertical-spacing-xs));
+    }
+  }
+
+  &-media {
+    background: #333333;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &-fullscreenButton {
+    .NotButton();
+    opacity: 0;
+
+    svg {
+      background: black;
+      border-radius: 70%;
+      height: 15px;
+      margin: 10px 10px 0 0;
+      position: absolute;
+      right: 0;
+      width: 15px;
+      z-index: 9;
+    }
+  }
+
+  @media @mq-lg {
+
+    &:hover,
+    &:focus-within {
+      .GallerySlide {
+        &-fullscreenButton {
+          opacity: 1;
+
+          .Carousel & {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}

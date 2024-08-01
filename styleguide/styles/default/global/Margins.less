@@ -1,0 +1,45 @@
+/*
+  Margin variables used around page level modules
+*/
+
+:root {
+  /* Vertical Margin */
+  --vertical-margin-sm: 24px;
+  --vertical-margin-md: 40px;
+  --vertical-margin-lg: 80px;
+
+  @media @mq-lg {
+    --vertical-margin-sm: 32px;
+    --vertical-margin-md: 64px;
+    --vertical-margin-lg: 128px;
+  }
+
+  /* Horizontal Margin */
+  --horizontal-margin-outside: 16px;
+  --horizontal-margin-inside: 40px;
+
+  @media @mq-md {
+    --horizontal-margin-outside: 40px;
+  }
+}
+
+[data-module] {
+  /* Vertical Margin */
+  --vertical-margin-sm: 24px;
+  --vertical-margin-md: 40px;
+  --vertical-margin-lg: 80px;
+
+  @container (@cq-lg) {
+    --vertical-margin-sm: 32px;
+    --vertical-margin-md: 64px;
+    --vertical-margin-lg: 128px;
+  }
+
+  /* Horizontal Margin */
+  --horizontal-margin-outside: 16px;
+  --horizontal-margin-inside: 40px;
+
+  @container (@cq-md) {
+    --horizontal-margin-outside: 40px;
+  }
+}

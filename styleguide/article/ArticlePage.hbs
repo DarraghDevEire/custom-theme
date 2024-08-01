@@ -1,0 +1,150 @@
+{{#set leadStyle=(fallback (fallback articleLeadStyle defaultArticleLeadStyle))}}
+<!DOCTYPE html>
+<html class="ArticlePage" {{~include "/page/Page-htmlAttributes.hbs" this}}{{#unless aside}} data-no-aside{{/unless}} data-lead="{{get "leadStyle"}}"{{#unless lead}}data-no-lead{{/unless}}>
+    {{include "/page/Page-head.hbs" this}}
+
+    <body class="Page-body">
+        {{include "/page/Page-bodyStart.hbs" this}}
+        {{include "/page/Page-header.hbs" this}}
+        <div data-moduleroot>
+            {{include "/page/Page-above.hbs" this}}
+            {{include "/page/Page-sponsoredBanner.hbs" this}}
+
+            <main class="Page-content">
+                {{#unless (eq (get "leadStyle") "nested")}}
+                    <div class="ArticlePage-lede">
+                        {{#eq (get "leadStyle") "overlay"}}
+                            {{#if lead}}
+                                {{#set imageSize="medium-square"}}
+                                    {{#set imageSizeAlt="xl-24x1"}}
+                                        {{#set lazyLoad=false}}
+                                            <div class="Page-lead">
+                                                {{#with lead}}
+                                                    {{this}}
+                                                {{/with}}
+                                                <div class="Page-lead-content">
+                                                    {{include "/page/Page-breadcrumbs.hbs" this}}
+                                                    {{include "/page/Page-headline.hbs" this}}
+                                                    {{include "/page/Page-subHeadline.hbs" this}}
+                                                </div>
+                                            </div>
+                                        {{/set}}
+                                    {{/set}}
+                                {{/set}}
+                            {{/if}}
+
+                        {{else}}
+                            <div class="ArticlePage-lede-content">
+                                {{include "/page/Page-breadcrumbs.hbs" this}}
+                                {{include "/page/Page-headline.hbs" this}}
+                                {{include "/page/Page-subHeadline.hbs" this}}
+
+                                {{include '/article/ArticlePageMeta.hbs' this}}
+                            </div>
+                        {{/eq}}
+                        {{#eq (get "leadStyle") "full"}}
+                            {{#set imageSize="xl-24x1"}}
+                                {{#set lazyLoad=false}}
+                                    {{include "/page/Page-lead.hbs" this}}
+                                {{/set}}
+                            {{/set}}
+                        {{/eq}}
+                        {{#eq (get "leadStyle") "large"}}
+                            {{#set imageSize="xl-24x1"}}
+                                {{#set lazyLoad=false}}
+                                    {{include "/page/Page-lead.hbs" this}}
+                                {{/set}}
+                            {{/set}}
+                        {{/eq}}
+                    </div>
+                {{/unless}}
+                {{#if aside}}<div class="Page-twoColumn">{{else}}<div class="Page-oneColumn" data-modulewell>{{/if}}
+                    <div class="Page-main">
+                        {{#if (eq (get "leadStyle") "nested")}}
+                            <div class="ArticlePage-lede">
+                                <div class="ArticlePage-lede-content">
+                                    {{include "/page/Page-breadcrumbs.hbs" this}}
+                                    {{include "/page/Page-headline.hbs" this}}
+                                    {{include "/page/Page-subHeadline.hbs" this}}
+
+                                    {{include '/article/ArticlePageMeta.hbs' this}}
+                                </div>
+                            </div>
+                            {{#set imageSize="large-16x9"}}
+                                {{#set sizes="(max-width: 800px) 100vw, 800px"}}
+                                    {{#set lazyLoad=false}}
+                                        {{include "/page/Page-lead.hbs" this}}
+                                    {{/set}}
+                                {{/set}}
+                            {{/set}}
+                        {{else}}
+                            {{#if (eq (get "leadStyle") "overlay")}}
+                                <div class="ArticlePage-lede-content">
+                                {{include '/article/ArticlePageMeta.hbs' this}}
+                                </div>
+                            {{/if}}
+                            {{#unless (get "leadStyle")}}
+                                {{#set imageSize="large-16x9"}}
+                                    {{#set lazyLoad=false}}
+                                        {{include "/page/Page-lead.hbs" this}}
+                                    {{/set}}
+                                {{/set}}
+                            {{else}}
+                                {{#eq (get "leadStyle") "standard"}}
+                                    {{#set imageSize="large-16x9"}}
+                                        {{#set lazyLoad=false}}
+                                            {{include "/page/Page-lead.hbs" this}}
+                                        {{/set}}
+                                    {{/set}}
+                                {{/eq}}
+                            {{/unless}}
+                        {{/if}}
+
+                        <div class="Page-articleBody">
+                                {{#with intro}}
+                                    <div class="Page-articleBody-intro RichTextBody">
+                                    {{this}}
+                                    </div>
+                                {{/with}}
+
+                                    {{#with items}}
+                                        <div class="Page-articleBody-items">
+                                            {{#each this~}}
+                                                <div class="Page-articleBody-items-item">
+                                                    {{#eq this._template "/listicle/ListicleItem.hbs"}}
+                                                        {{include "/listicle/ListicleItem.hbs" this}}
+                                                    {{else}}
+                                                        {{render this}}
+                                                    {{/eq}}
+                                                </div>
+                                            {{~/each}}
+                                        </div>
+                                    {{/with}}
+
+                                {{#with articleBody}}
+                                    <div class="RichTextArticleBody RichTextBody">
+                                        {{this}}
+                                    </div>
+                                {{/with}}
+
+                                {{#with attributionBody}}
+                                    <div class="RichTextArticleBody RichTextBody">
+                                        {{this}}
+                                    </div>
+                                {{/with}}
+                        </div>
+
+                        {{include "/page/Page-articleBelow.hbs" this}}
+                    </div>
+
+                    {{include '/page/Page-aside.hbs' this}}
+                </div>
+            </main>
+
+            {{include "/page/Page-below.hbs" this}}
+        </div>
+        {{include "/page/Page-footer.hbs" this}}
+        {{include "/page/Page-extraBodyItems.hbs" this}}
+    </body>
+</html>
+{{/set}}

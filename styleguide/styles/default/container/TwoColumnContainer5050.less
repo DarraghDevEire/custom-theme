@@ -1,0 +1,13 @@
+.TwoColumnContainer5050 {
+  &-container {
+    display: grid;
+    column-gap: var(--horizontal-margin-inside);
+    row-gap: var(--vertical-margin-md);;
+  }
+
+  @container (@cq-lg) {
+    &-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.AttachmentEnhancement {
+  color: var(--color-primary-text);
+  background-color: var(--color-site-secondary-bg);
+  padding: var(--vertical-spacing-md) var(--vertical-spacing-md);
+  .verticalSpacing(var(--vertical-spacing-xxl));
+
+  &-title {
+    &:extend(.headline-8 all);
+  }
+
+  &-description {
+    &:extend(.subhead-3 all);
+  }
+
+  &-title,
+  &-description {
+    .verticalSpacing(var(--vertical-spacing-sm));
+  }
+
+  &-link {
+    &:extend(.label-3 all);
+    .verticalSpacing(var(--vertical-spacing-lg));
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--horizontal-spacing-xs);
+    row-gap: var(--vertical-spacing-xs);
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}

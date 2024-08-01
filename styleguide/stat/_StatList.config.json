@@ -1,0 +1,44 @@
+{
+  "styles": {
+    "/stat/StatList.hbs": {
+      "fields": [
+        "listTitleSize",
+        "listDescriptionSize",
+        "backgroundColor",
+        "useTextColors",
+        "itemDisplayStyle",
+        "itemBackgroundColor",
+        "itemBackgroundImage",
+        "itemTextColor",
+        "itemDescriptionAlignment",
+        "headerTextAlign",
+        "modulePaddingTop",
+        "modulePaddingBottom"
+      ],
+      "templates": [
+        {
+          "displayName": "Stat List A",
+          "example": "/stat/StatListA.json",
+          "height": 800,
+          "width": 1024,
+          "fields": [
+            "countUpAnimation"
+          ]
+        },
+        {
+          "displayName": "Stat List B",
+          "example": "/stat/StatListB.json",
+          "height": 800,
+          "width": 1024,
+          "fields": [
+            "countUpAnimation",
+            "listTitleSize",
+            "listDescriptionSize",
+            "listHeaderPosition",
+            "textAlign"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<bsp-video-playlist-module data-module class="VideoPlaylistModule"
+    {{~#gt playlist.length 3}} data-clipped{{/gt~}}
+    {{~#with playlistBottom}} data-playlist-bottom{{/with~}}
+    {{~include "/global/ModuleAttributes.hbs" this~}}
+    >
+    {{include "/global/ModuleHeader.hbs" this}}
+
+    <div class="VideoPlaylistModule-body">
+        {{#with playlist.[0]}}
+            <div class="VideoPlaylistModule-currentItem" data-player-container>
+                {{#with player}}
+                    <div class="VideoPlaylistItem-player">{{this}}</div>
+                {{/with}}
+                {{#with title}}
+                    <div class="VideoPlaylistItem-title">{{this}}</div>
+                {{/with}}
+            </div>
+        {{/with}}
+        {{#with playlist}}
+            <div class="VideoPlaylistModule-playlist">
+                <div class="VideoPlaylistModule-playlist-items" data-playlist-items>
+                    {{#each this}}
+                        <div class="VideoPlaylistModule-playlist-items-item">
+                            {{include "/video/VideoPlaylistItem.hbs" this isCurrent=(eq @index 0)}}
+                        </div>
+                    {{/each}}
+                </div>
+                <button class="VideoPlaylistModule-playlistToggle" data-click="toggleExpand">{{format "/video/VideoPlayer" "loadMoreText"}}</button>
+                <div class="VideoPlaylistModule-playlistNavigation">
+                    <button data-scroll-backward>
+                        <svg><use href="#chevron-down"></use></svg>
+                    </button>
+                    <button data-scroll-forward>
+                        <svg><use href="#chevron-down"></use></svg>
+                    </button>
+                </div>
+            </div>
+        {{/with}}
+    </div>
+
+    {{include "/page/list/includes/PageList-footer.hbs" this}}
+</bsp-video-playlist-module>

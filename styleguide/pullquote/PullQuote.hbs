@@ -1,0 +1,26 @@
+<div class="Enhancement"{{#if enhancementAlignment}} data-{{enhancementAlignment}}{{else}} data-align-center{{/if}}>
+    <div class="Enhancement-item">
+        <div class="Quote"
+            {{~#if backgroundColor}} data-has-background{{/if~}}
+            {{~#with useTextColors}} data-use-text-colors="{{this}}"{{/with~}}
+            {{~#with (fallback backgroundColor "var(--color-site-secondary-bg)") }} style="--color-quote-background: {{this}};"{{/with~}}
+            >
+
+            <div class="Quote-content">
+                <blockquote>
+                    <p>
+                        {{~quote~}}
+                    </p>
+                </blockquote>
+
+                {{#with attribution}}
+                    <div class="Quote-attribution">
+                        <div class="Quote-attribution-text">
+                            {{this}}
+                        </div>
+                    </div>
+                {{/with}}
+            </div>
+        </div>
+    </div>
+</div>

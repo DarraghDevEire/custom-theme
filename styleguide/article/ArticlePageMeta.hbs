@@ -1,0 +1,11 @@
+<div class="ArticlePageMeta">
+    <div class="ArticlePageMeta-content">
+        {{include "/page/Page-byline.hbs" this}}
+        {{actions}}
+    </div>
+    {{#if sponsored}}
+    <div class="ArticlePageMeta-sponsor">
+        {{sponsored}}
+    </div>
+    {{/if}}
+</div>

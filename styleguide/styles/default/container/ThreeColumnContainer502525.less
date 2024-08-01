@@ -1,0 +1,27 @@
+.ThreeColumnContainer502525 {
+  &-container {
+    display: grid;
+    column-gap: var(--horizontal-margin-inside);
+    row-gap: var(--vertical-margin-md);
+  }
+
+  @container (@cq-md) {
+    &-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &-column:nth-child(1) {
+      grid-column: span 2;
+    }
+  }
+
+  @container (@cq-hk) {
+    &-container {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    &-column:nth-child(1) {
+      grid-column: unset;
+    }
+  }
+}

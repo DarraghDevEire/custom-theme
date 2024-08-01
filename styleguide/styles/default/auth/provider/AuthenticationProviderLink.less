@@ -1,0 +1,28 @@
+.AuthenticationProviderLink {
+  align-items: center;
+  background-color: var(--color-auth-provider-background);
+  color: inherit;
+  display: flex;
+  padding: 8px 50px;
+  padding-bottom: 7px;
+  column-gap: var(--horizontal-spacing-sm);
+  row-gap: var(--vertical-spacing-sm);
+
+  .AuthenticationProviderIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    display: grid;
+    place-items: center;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &-body {
+    .label-2;
+  }
+}

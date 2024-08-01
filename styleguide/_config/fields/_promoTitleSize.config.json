@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "promoTitleSize": {
+      "type": "text",
+      "cms.ui.dropDown": true,
+      "cms.ui.placeholder": "Default",
+      "values": [
+        {
+          "label": "PromoTitle1 (XXLarge)",
+          "value": "1"
+        },
+        {
+          "label": "PromoTitle2 (XLarge)",
+          "value": "2"
+        },
+        {
+          "label": "PromoTitle3 (Large)",
+          "value": "3"
+        },
+        {
+          "label": "PromoTitle4 (Medium)",
+          "value": "4"
+        },
+        {
+          "label": "PromoTitle5 (Small)",
+          "value": "5"
+        },
+        {
+          "label": "PromoTitle6 (XSmall)",
+          "value": "6"
+        }
+      ]
+    }
+  }
+}

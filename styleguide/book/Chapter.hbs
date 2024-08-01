@@ -1,0 +1,40 @@
+<bsp-chapter class="Chapter"
+    {{~#if chapters}} data-has-chapters{{/if~}}
+    {{~#if isCurrent}} data-current{{/if~}}
+    {{~#or isAnchor (contains title.[0].href "#")}} data-is-anchor{{/or~}}
+    {{~#if isExternal}} data-external{{/if~}}
+    {{~#and chapters (containsCurrentChapter this)}} data-expanded{{/and~}}
+    >
+    <div class="Chapter-header">
+        {{~#if chapters}}
+            <button class="Chapter-icon" aria-label="{{format 'toggleChapter'}}">
+                <svg class="Chapter-iconCollapsed">
+                    <use href="#icon-chevron-right"></use>
+                </svg>
+                <svg class="Chapter-iconExpanded">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </button>
+        {{/if~}}
+        <div class="Chapter-title">
+            {{#with label}}
+                <span class="Chapter-label" data-label="{{this}}">
+                    {{~format 'label' label=this~}}
+                </span>
+            {{/with}}
+            {{~title~}}
+            {{#if isExternal}}
+                <svg>
+                    <use href="#icon-launch"></use>
+                </svg>
+            {{/if}}
+        </div>
+    </div>
+    {{#if chapters}}
+        <ul class="Chapter-chapters">
+        {{#each chapters}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
+    {{/if}}
+</bsp-chapter>

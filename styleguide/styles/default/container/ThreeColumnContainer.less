@@ -1,0 +1,13 @@
+.ThreeColumnContainer {
+  &-container {
+    display: grid;
+    column-gap: var(--horizontal-margin-inside);
+    row-gap: var(--vertical-margin-md);
+  }
+
+  @container (@cq-md) {
+    &-container {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

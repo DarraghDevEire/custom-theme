@@ -1,0 +1,169 @@
+.HotspotModule {
+  display: grid;
+  column-gap: var(--horizontal-spacing-md);
+  row-gap: var(--vertical-spacing-md);
+
+  &[data-text-align="left"] {
+    text-align: left;
+  }
+
+  &[data-text-align="center"] {
+    text-align: center;
+  }
+
+  &[data-text-align="right"] {
+    text-align: right;
+  }
+
+  &-content {
+    .PagePromo {
+      &-description {
+        &:extend(.subhead-3 all);
+      }
+
+      &-title {
+        &:extend(.headline-4 all);
+      }
+    }
+  }
+
+  &-hotspotCount {
+    color: var(--color-primary-text);
+    background-color: var(--color-module-background, var(--color-site-bg));
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    height: var(--vertical-spacing-lg);
+    left: 8px;
+    position: absolute;
+    top: 8px;
+
+    &-number {
+      .label-5;
+      display: block;
+      line-height: var(--vertical-spacing-lg);
+      padding: 0 var(--horizontal-spacing-sm) 0 var(--horizontal-spacing-lg);
+    }
+
+    .HotspotModule-hotspotIcon {
+      height: 12px;
+      left: 8px;
+      position: absolute;
+      transform: translate(0, 0);
+      top: 6px;
+      width: 12px;
+    }
+  }
+
+  &-hotspot {
+    color: var(--color-primary-text);
+    background-color: var(--color-module-background, var(--color-site-bg));
+    border-radius: 100%;
+    cursor: pointer;
+    display: none;
+    height: 32px;
+    position: absolute;
+    width: 32px;
+
+    &:hover {
+      background-color: var(--color-primary);
+    }
+  }
+
+  &-hotspots {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  &-hotspotIcon {
+    height: 16px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+
+    [data-icon='icon-magnify'] &,
+    [data-icon='icon-plus'] & {
+      height: 14px;
+      width: 14px;
+    }
+  }
+
+  &-media {
+    margin: 0;
+    position: relative;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &:not([data-carousel-ready]) &-modal-carousel {
+    opacity: 0;
+  }
+
+  &-modal {
+    place-content: center;
+
+    &[open] {
+      display: grid;
+    }
+
+    .PagePromo,
+    .ProductPromo {
+      background-color: var(--color-site-bg);
+      padding: var(--horizontal-spacing-md);
+      max-width: 400px;
+
+      [data-promo-size='medium'] & {
+        max-width: 600px;
+      }
+
+      [data-promo-size='large'] & {
+        max-width: 800px;
+      }
+    }
+
+    &-carousel {
+      width: 100%;
+      transition: opacity 200ms;
+
+      &-slide {
+        align-items: stretch;
+        display: flex;
+        padding: 0 var(--horizontal-spacing-md);
+        min-height: 100%;
+      }
+    }
+
+    &-content {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @container (@cq-md) {
+    &-hotspot {
+      display: block;
+    }
+  }
+
+  @container (@cq-lg) {
+    &-content {
+      .PagePromo {
+        &-button {
+          margin-top: var(--vertical-spacing-md);
+        }
+
+        &-media {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

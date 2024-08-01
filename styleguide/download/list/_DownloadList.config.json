@@ -1,0 +1,30 @@
+{
+  "styles": {
+    "/download/list/DownloadList.hbs": {
+      "fields": [
+        "backgroundColor",
+        "useTextColors",
+        "listTitleSize",
+        "listDescriptionSize",
+        "headerTextAlign",
+        "ctaAlignment",
+        "itemDisplayStyle",
+        "itemBackgroundColor",
+        "itemBackgroundImage",
+        "itemTextColor",
+        "itemTitleAlignment",
+        "itemDescriptionAlignment",
+        "itemCtaAlignment",
+        "itemImageAspectRatio",
+        "modulePaddingTop",
+        "modulePaddingBottom"
+      ],
+      "templates": [
+        {
+          "displayName": "Download List",
+          "example": "/download/list/DownloadList.json"
+        }
+      ]
+    }
+  }
+}

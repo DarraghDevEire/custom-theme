@@ -1,0 +1,11 @@
+{{#with aside}}
+    <aside class="{{#if ../className}}{{../className}}{{else}}Page{{/if}}-aside">
+        <div class="{{#if ../className}}{{../className}}{{else}}Page{{/if}}-aside-content" data-modulewell>
+            {{#each this}}
+            {{render this
+                [/page/list/PageList.hbs]="/page/list/PageListRightRailA.hbs"
+            }}
+            {{/each}}
+        </div>
+    </aside>
+{{/with}}

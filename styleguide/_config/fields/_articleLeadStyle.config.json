@@ -1,0 +1,32 @@
+{
+  "fields": {
+    "articleLeadStyle": {
+      "displayName": "Choose article lead style",
+      "type": "text",
+      "cms.ui.dropDown": true,
+      "cms.ui.placeholder": "Default",
+      "values": [
+        {
+          "label": "Standard",
+          "value": "standard"
+        },
+        {
+          "label": "Large",
+          "value": "large"
+        },
+        {
+          "label": "Overlay",
+          "value": "overlay"
+        },
+        {
+          "label": "Nested",
+          "value": "nested"
+        },
+        {
+          "label": "Full Width",
+          "value": "full"
+        }
+      ]
+    }
+  }
+}

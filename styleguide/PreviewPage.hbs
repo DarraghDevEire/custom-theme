@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html class="PreviewPage" {{~include "/page/Page-htmlAttributes.hbs" this}}>
+{{include "/page/Page-head.hbs" this}}
+
+<body class="Page-body">
+    {{include "/page/Page-bodyStart.hbs" this}}
+    <div data-moduleroot>
+        <main class="Page-main">
+            {{#with main}}{{this}}{{/with}}
+        </main>
+    </div>
+</body>
+</html>

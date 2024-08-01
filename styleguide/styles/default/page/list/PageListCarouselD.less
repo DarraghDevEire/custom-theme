@@ -1,0 +1,54 @@
+.PageListCarouselD {
+  .PageList-items {
+    &:after {
+      content: 'flickity';
+      display: none;
+    }
+
+    &-item {
+      margin-right: var(--horizontal-spacing-md);
+      max-width: 140px;
+      width: 40%;
+    }
+  }
+
+  .PagePromo {
+    &-title {
+      text-align: center;
+    }
+  }
+
+  &[data-item-display-style="card"] .PagePromo {
+    &-media {
+      margin-bottom: 0;
+    }
+
+    &-content {
+      padding: var(--vertical-spacing-lg) var(--horizontal-spacing-lg);
+    }
+  }
+
+  @container (@cq-md) {
+    .PageList-items {
+      width: calc(100% + var(--horizontal-spacing-lg));
+
+      &-item {
+        margin-right: var(--horizontal-spacing-lg);
+        max-width: none;
+        width: calc(25% - var(--horizontal-spacing-lg));
+      }
+    }
+  }
+
+  @container (@cq-lg) {
+    .PageList-items {
+      &-item {
+        width: calc((100% / 6) - var(--horizontal-spacing-lg));
+
+        [data-column-count="5"]& {
+          width: calc(20% - var(--horizontal-spacing-lg));
+        }
+      }
+    }
+  }
+}

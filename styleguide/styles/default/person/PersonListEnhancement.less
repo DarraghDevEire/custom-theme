@@ -1,0 +1,13 @@
+.PersonListEnhancement {
+  @media @mq-md {
+    .AuthorListA-items {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &:is([data-align-left], [data-align-right]) {
+      .AuthorListA-items {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

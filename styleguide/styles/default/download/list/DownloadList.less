@@ -1,0 +1,16 @@
+.DownloadList {
+  display: block;
+
+  &-items {
+    display: grid;
+    column-gap: var(--horizontal-spacing-md);
+    row-gap: var(--vertical-spacing-md);
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @container (@cq-lg) {
+    &-items {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+}

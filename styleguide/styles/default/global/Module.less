@@ -1,0 +1,89 @@
+[data-moduleroot] {
+  container-type: inline-size;
+  container-name: root;
+}
+
+.RichTextBody,
+[data-modulewell] {
+  container-type: inline-size;
+  container-name: contained;
+}
+
+[data-module] {
+  // Defaults
+  --modulePaddingTop: var(--vertical-margin-md);
+  --modulePaddingBottom: var(--vertical-margin-md);
+
+  &:where([data-module-padding-top="none"]) {
+    --modulePaddingTop: 0;
+  }
+
+  &:where([data-module-padding-top="small"]) {
+    --modulePaddingTop: var(--vertical-margin-sm);
+  }
+
+  &:where([data-module-padding-top="medium"]) {
+    --modulePaddingTop: var(--vertical-margin-md);
+  }
+
+  &:where([data-module-padding-top="large"]) {
+    --modulePaddingTop: var(--vertical-margin-lg);
+  }
+
+  &:where([data-module-padding-bottom="none"]) {
+    --modulePaddingBottom: 0;
+  }
+
+  &:where([data-module-padding-bottom="small"]) {
+    --modulePaddingBottom: var(--vertical-margin-sm);
+  }
+
+  &:where([data-module-padding-bottom="medium"]) {
+    --modulePaddingBottom: var(--vertical-margin-md);
+  }
+
+  &:where([data-module-padding-bottom="large"]) {
+    --modulePaddingBottom: var(--vertical-margin-lg);
+  }
+}
+
+// Set of rules for a normal data-module directly in a modulewell
+[data-module] {
+  &:where([data-has-background]) {
+    background-color: var(--color-module-background);
+  }
+
+  &:where([data-has-background-image]) {
+    background-image: var(--background-image);
+    background-size: cover;
+  }
+
+  &:where([data-has-border]) {
+    border-color: var(--color-module-border);
+  }
+}
+
+[data-module] {
+  .layoutWidth();
+  margin-top: var(--modulePaddingTop);
+  margin-bottom: var(--modulePaddingBottom);
+
+  &:where([data-has-background]) {
+    margin-block: 0;
+    padding-top: var(--modulePaddingTop);
+    padding-bottom: var(--modulePaddingBottom);
+  }
+}
+
+@container contained (min-width: 0px) {
+  [data-module] {
+    padding-inline: 0; // to cancel layoutWidth
+    margin-block: 0; // resets root container margins
+    .verticalSpacing(var(--modulePaddingTop), var(--modulePaddingBottom));
+
+    &:where([data-has-background], [data-has-border]) {
+      padding-inline: var(--horizontal-spacing-lg);
+      padding-block: var(--vertical-spacing-lg);
+    }
+  }
+}

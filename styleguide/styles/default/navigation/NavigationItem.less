@@ -1,0 +1,268 @@
+.NavigationItem {
+  position: relative;
+
+  &-more {
+    align-self: center;
+
+    button {
+      &:extend(.NotButton all);
+      cursor: pointer;
+      height: 16px;
+      width: 16px;
+    }
+
+    svg {
+      fill: var(--color-header-text);
+      height: 17px;
+      width: 11px;
+
+      [data-item-click="true"] & {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-items {
+    display: none;
+    padding: 0 0 15px 0;
+
+    [data-item-click="true"] & {
+      display: block;
+    }
+  }
+
+  // These are the top level items in the navigation
+  &-text {
+    &:extend(.label-2 all);
+
+    color: var(--color-header-text);
+    --color-link-text: var(--color-header-text);
+    --color-link-text-hover: var(--color-header-text);
+    display: flex;
+    column-gap: var(--horizontal-spacing-xs);
+    justify-content: space-between;
+
+    a,
+    span {
+      display: block;
+      padding: var(--vertical-spacing-md) 0;
+      width: 100%;
+      word-break: keep-all;
+    }
+
+    a.Button {
+      --color-link-text: var(--color-button-text);
+      border-bottom-width: 1px;
+      display: inline-block;
+      padding: 0 25px;
+      margin: 15px 0;
+      width: auto;
+    }
+  }
+
+  // temporary treatment for Grouped subnav until we have a design
+  .NavigationGroup {
+    >span.NavigationLink {
+      &:extend(.label-1 all);
+      color: var(--color-secondary-text);
+      text-transform: uppercase;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  // These are the subnav items
+  .NavigationLink {
+    &:extend(.label-2 all);
+
+    --color-link-text: var(--color-header-text);
+    --color-link-text-hover: var(--color-primary);
+    display: block;
+    padding: var(--vertical-spacing-md) var(--horizontal-spacing-md);
+    width: 100%;
+
+    &-description {
+      &:extend(.subhead-2 all);
+
+      display: block;
+      margin-top: var(--vertical-spacing-xs);
+    }
+  }
+
+  @media @mq-hk {
+    align-items: center;
+    display: flex;
+    height: 100%;
+
+    &-items {
+      background: var(--color-header-bg);
+      box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.1);
+      border-top: 0;
+      display: grid;
+      left: -30px;
+      padding: var(--vertical-spacing-md) 0;
+      position: absolute;
+      top: var(--headerHeight);
+      min-width: 300px;
+      word-break: keep-all;
+      overflow: hidden;
+      visibility: hidden;
+      z-index: @z-index-header + 1;
+      width: auto;
+
+      &[data-mosaic='true'] {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: 620px;
+
+        .NavigationItem-items-item {
+          padding: 0;
+          width: 50%;
+        }
+      }
+
+      &[data-columns='2'] {
+        grid-template-columns: 1fr 1fr;
+        width: 520px;
+
+        // in case we want borders between menu columns, this is an easy way
+        //
+        // &:before {
+        //   background: var(--color-header-border);
+        //   bottom: 30px;
+        //   content: '';
+        //   left: 260px;
+        //   position: absolute;
+        //   top: 30px;
+        //   width: 1px;
+        // }
+      }
+
+      &[data-columns='3'] {
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 780px;
+
+        &[data-mosaic='true'] {
+          .NavigationItem-items-item {
+            width: 33.333%;
+          }
+        }
+
+        // in case we want borders between menu columns, this is an easy way
+        //
+        // &:before {
+        //   background: var(--color-header-border);
+        //   bottom: 30px;
+        //   content: '';
+        //   left: 260px;
+        //   position: absolute;
+        //   top: 30px;
+        //   width: 1px;
+        // }
+
+        // &:after {
+        //   background: var(--color-header-border);
+        //   bottom: 30px;
+        //   content: '';
+        //   left: 520px;
+        //   position: absolute;
+        //   top: 30px;
+        //   width: 1px;
+        // }
+      }
+
+      &[data-columns='4'] {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 1040px;
+
+        &[data-mosaic='true'] {
+          .NavigationItem-items-item {
+            width: 25%;
+          }
+        }
+      }
+
+      &[data-columns='5'] {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        width: 1240px;
+
+        &[data-mosaic='true'] {
+          .NavigationItem-items-item {
+            width: 20%;
+          }
+        }
+      }
+
+      &[data-columns='6'] {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        width: 1240px;
+
+        &[data-mosaic='true'] {
+          .NavigationItem-items-item {
+            width: 15.76%; // not sure why 16.666 does not work
+          }
+        }
+      }
+
+      &[data-open-direction='left'] {
+        position: fixed;
+        left: unset;
+        right: 20px;
+
+        :root[data-header-hat=true] & {
+          top: calc(~'var(--headerHeight) + var(--hatHeight)');
+        }
+      }
+
+      [data-item-hover] & {
+        overflow: initial;
+        visibility: visible;
+      }
+
+      &-item {
+        padding: 0 var(--horizontal-spacing-md);
+        position: relative;
+
+        .NavigationLink {
+          --color-link-text-hover: var(--color-header-text);
+          padding-left: var(--horizontal-spacing-md);
+          padding-right: var(--horizontal-spacing-md);
+
+          &:hover {
+            background: var(--color-header-secondary-bg)
+          }
+        }
+      }
+    }
+
+    &-text {
+
+      &:has(:where(a:hover, span:hover)),
+      [data-item-hover] & {
+        box-shadow: 0 5px 0 0 var(--color-primary);
+
+        &:has(.Button) {
+          box-shadow: none;
+        }
+      }
+
+      a,
+      span {
+        padding: var(--vertical-spacing-sm) 0;
+
+        [data-toggle-header="hamburger-menu"] & {
+          border-bottom: 0;
+          padding: var(--vertical-spacing-md) var(--horizontal-spacing-md);
+        }
+      }
+
+      a.Button {
+        margin-left: var(--horizontal-spacing-md);
+        margin-right: var(--horizontal-spacing-md);
+      }
+    }
+  }
+}

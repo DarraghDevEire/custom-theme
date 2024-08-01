@@ -1,0 +1,35 @@
+.QuoteListA {
+  .ModuleHeader {
+    text-align: center;
+  }
+
+  .Quote {
+    margin: 0 auto;
+    padding: var(--vertical-spacing-md) var(--horizontal-spacing-md);
+    max-width: 800px;
+  }
+
+  &-items {
+    width: 100%;
+
+    &-item {
+      padding-right: var(--horizontal-spacing-md);
+      width: 90%;
+    }
+
+    &.flickity-enabled &-item {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @container (@cq-md) {
+    &-items {
+      &-item {
+        padding-right: var(--horizontal-spacing-md);
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "fields": {
+    "countUpAnimation": {
+      "type": "boolean",
+      "cms.ui.note": "Count up animation when Stat List comes into view? (must use integers in value field)"
+    }
+  }
+}

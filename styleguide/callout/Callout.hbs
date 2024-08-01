@@ -1,0 +1,43 @@
+<div class="Callout" {{include '/global/ModuleAttributes.hbs' this}}
+    {{~#with type}} data-type="{{this}}"{{/with~}}
+    >
+    {{include "/link/AnchorLink.hbs" this}}
+
+    {{#or type title}}
+    <div class="Callout-header">
+        {{#with type}}
+        <svg class="Callout-icon">
+            {{#eq this 'important'}}
+            <use href="#icon-star"></use>
+            {{/eq}}
+            {{#eq this 'tip'}}
+            <use href="#icon-wand"></use>
+            {{/eq}}
+            {{#eq this 'note'}}
+            <use href="#icon-note"></use>
+            {{/eq}}
+            {{#eq this 'warning'}}
+            <use href="#icon-warning"></use>
+            {{/eq}}
+        </svg>
+        {{/with}}
+        <div class="Callout-title">
+            {{#with title}}
+                {{this}}
+            {{/with}}
+            {{#unless title}}
+                {{#eq type 'important'}}{{format 'importantTitle'}}{{/eq}}
+                {{#eq type 'tip'}}{{format 'tipTitle'}}{{/eq}}
+                {{#eq type 'note'}}{{format 'noteTitle'}}{{/eq}}
+                {{#eq type 'warning'}}{{format 'warningTitle'}}{{/eq}}
+            {{/unless}}
+        </div>
+    </div>
+    {{/or}}
+
+    {{#with body}}
+        <div class="Callout-body RichTextBody">
+            {{this}}
+        </div>
+    {{/with}}
+</div>

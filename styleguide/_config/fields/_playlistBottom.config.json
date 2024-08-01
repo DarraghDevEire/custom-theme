@@ -1,0 +1,8 @@
+{
+  "fields": {
+    "playlistBottom": {
+      "type": "boolean",
+      "displayName": "Position playlist below the player?"
+    }
+  }
+}

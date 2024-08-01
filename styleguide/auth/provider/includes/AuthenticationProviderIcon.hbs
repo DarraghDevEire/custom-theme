@@ -1,0 +1,18 @@
+{{~#with providerIdentifier~}}
+<span class="AuthenticationProviderIcon">
+    <svg>
+        {{~#eq this 'facebook'~}}
+        <use xlink:href="#mono-icon-facebook"></use>
+        {{~/eq~}}
+        {{~#eq this 'google'~}}
+        <use xlink:href="#mono-icon-google"></use>
+        {{~/eq~}}
+        {{~#eq this 'twitter'~}}
+        <use xlink:href="#mono-icon-twitter"></use>
+        {{~/eq~}}
+        {{~#eq this 'linkedin'~}}
+        <use xlink:href="#mono-icon-linkedin"></use>
+        {{~/eq~}}
+    </svg>
+</span>
+{{~/with~}}

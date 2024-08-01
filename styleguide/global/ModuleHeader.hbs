@@ -1,0 +1,14 @@
+{{include "/link/AnchorLink.hbs" this}}
+{{#or title description}}
+    <div class="ModuleHeader">
+        {{#if title}}
+            <div class="ModuleHeader-title">{{title}}</div>
+        {{/if}}
+        {{#if description}}
+            <div class="ModuleHeader-description">{{description}}</div>
+        {{/if}}
+        {{#eq (fallback moduleHeaderPosition listHeaderPosition) 'side'}}
+            {{include "/page/list/includes/PageList-cta.hbs" this}}
+        {{/eq}}
+    </div>
+{{/or}}

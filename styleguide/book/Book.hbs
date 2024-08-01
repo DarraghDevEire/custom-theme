@@ -1,0 +1,27 @@
+<bsp-book class="Book"
+    {{~#if disableAjaxContentLoad}} data-is-no-ajax{{/if~}}
+    >
+    <div class="Book-header">
+        <svg class="Book-icon">
+            <use xlink:href="#icon-activity"></use>
+        </svg>
+        {{#with navigationHeading}}
+            <div class="Book-navigationHeading">{{this}}</div>
+        {{/with}}
+        <button class="Book-toggle"  aria-label="{{format "toggleButton"}}">
+            <svg class="Book-expand">
+                <use href="#icon-chevron-down"></use>
+            </svg>
+            <svg class="Book-collapse">
+                <use href="#close-x"></use>
+            </svg>
+        </button>
+    </div>
+    {{#with chapters}}
+        <ul class="Book-items">
+            {{#each this}}
+                <li  class="Book-items-item">{{this}}</li>
+            {{/each}}
+        </ul>
+    {{/with}}
+</bsp-book>

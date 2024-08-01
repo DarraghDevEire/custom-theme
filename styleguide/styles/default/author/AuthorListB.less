@@ -1,0 +1,68 @@
+.AuthorListB {
+  &-items {
+    width: calc(100% + var(--horizontal-spacing-md));
+
+    &-item {
+      margin-right: var(--vertical-spacing-md);
+      min-height: 100%;
+      width: 200px;
+      display: grid;
+    }
+  }
+
+  .AuthorPromo {
+    align-items: center;
+    flex-direction: column;
+    column-gap: 0;
+    text-align: center;
+
+    .PagePromo {
+      &-media {
+        width: 120px;
+
+        img {
+          width: 120px;
+        }
+      }
+    }
+  }
+
+  @container (@cq-md) {
+    &-items {
+      &-item {
+        margin-right: var(--vertical-spacing-md);
+        width: calc(33.3% - var(--horizontal-spacing-md));
+
+        [data-column-count='2'] & {
+          width: calc(50% - var(--horizontal-spacing-md));
+        }
+      }
+    }
+  }
+
+  @container (@cq-lg) {
+    &-items {
+      &-item {
+        width: calc(20% - var(--horizontal-spacing-md));
+
+        [data-column-count='3'] & {
+          width: calc(33.3% - var(--horizontal-spacing-md));
+        }
+
+        [data-column-count='4'] & {
+          width: calc(25% - var(--horizontal-spacing-md));
+        }
+      }
+    }
+  }
+
+  @container (@cq-xl) {
+    &-items {
+      &-item {
+        [data-column-count='6'] & {
+          width: calc(16.6% - var(--horizontal-spacing-md));
+        }
+      }
+    }
+  }
+}
